@@ -1,0 +1,39 @@
+[gd_resource type="CanvasItemShader" format=1]
+
+[resource]
+
+_code = {
+"fragment": "// See https://stackoverflow.com/questions/5149544/can-i-generate-a-random-number-inside-a-pixel-shader#10625698
+// Version 3
+float rand(vec2 p, float seed) {
+    vec2 K1 = vec2(
+        23.14069263277926, // e^pi (Gelfond's constant)
+         2.665144142690225 // 2^sqrt(2) (Gelfond-Schneider constant)
+    );
+    return fract( cos( dot(p,K1) ) * seed );
+}
+
+float timeTruncated = (TIME/10)-mod(TIME/10,1);
+float timeLeftInLargeCycle = timeTruncated*10-(TIME-mod(TIME,1));
+float rando = rand(vec2(POSITION.x,POSITION.y),12345.678);
+if (rando > 0.999) {
+	float blackness = 0;
+	float timeDecimals = mod(TIME,1)+(rand(vec2(POSITION.x+6,POSITION.y+6),12345.678)/4);
+	if (timeDecimals < 0.5) {
+		blackness = timeDecimals*2;
+	} else {
+		blackness = abs((timeDecimals*2)-2);
+	}
+	blackness /= 17;
+	blackness += rand(vec2(POSITION.x-6,POSITION.y-6),12345.678);
+	COLOR = vec4(blackness,blackness,blackness,1);
+} else {
+	COLOR = vec4(0,0,0,1);
+}",
+"fragment_ofs": 0,
+"light": "",
+"light_ofs": 0,
+"vertex": "",
+"vertex_ofs": 0
+}
+
