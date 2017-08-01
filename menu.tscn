@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://menu.gd" type="Script" id=1]
 [ext_resource path="res://background_materiall.tres" type="CanvasItemMaterial" id=2]
-[ext_resource path="res://Nestill-Regular.fnt" type="BitmapFont" id=3]
-[ext_resource path="res://Nestill-Regular-Large.fnt" type="BitmapFont" id=4]
-[ext_resource path="res://Nestill-Regular-Small.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://Nestill-Regular-Small.fnt" type="BitmapFont" id=3]
+[ext_resource path="res://Nestill-Regular.fnt" type="BitmapFont" id=4]
+[ext_resource path="res://loadout_selector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Nestill-Regular-Large.fnt" type="BitmapFont" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -57,7 +58,7 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 1 )
-screen_move_speed = 1000
+screen_move_speed = 3000
 
 [node name="background" type="CanvasLayer" parent="."]
 
@@ -102,6 +103,28 @@ margin/top = 0.0
 margin/right = 2.0
 margin/bottom = 1.0
 
+[node name="player" type="Label" parent="foreground/play"]
+
+anchor/left = 2
+anchor/top = 2
+anchor/right = 2
+anchor/bottom = 2
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.116667
+margin/right = 1.0
+margin/bottom = 0.23
+custom_fonts/font = ExtResource( 3 )
+text = "Player FIXME"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="back" type="Button" parent="foreground/play"]
 
 rect/scale = Vector2( 0.5, 0.5 )
@@ -116,7 +139,7 @@ margin/bottom = 128.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.390625, 0.390625, 0.390625, 0.92349 )
 toggle_mode = false
@@ -124,6 +147,33 @@ enabled_focus_mode = 2
 shortcut = null
 text = "Back"
 flat = true
+
+[node name="next" type="Button" parent="foreground/play"]
+
+anchor/left = 1
+anchor/right = 1
+rect/scale = Vector2( 0.5, 0.5 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 136.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 128.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.390625, 0.390625, 0.390625, 0.92349 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Next"
+flat = true
+
+[node name="loadout_selector" parent="foreground/play" instance=ExtResource( 5 )]
 
 [node name="start" type="ReferenceFrame" parent="foreground"]
 
@@ -149,7 +199,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 480.0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 0.332031, 0.332031, 1 )
 text = "9g"
 align = 1
@@ -198,7 +248,7 @@ margin/bottom = 74.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.390625, 0.390625, 0.390625, 0.92349 )
 toggle_mode = false
@@ -220,7 +270,7 @@ margin/bottom = 152.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_pressed = Color( 0.390625, 0.390625, 0.390625, 0.92349 )
 toggle_mode = false

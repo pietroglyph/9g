@@ -1,6 +1,6 @@
 extends Control
 
-export(float) var screen_move_speed = 1000
+export(float) var screen_move_speed = 3000
 
 var current_screen = "start"
 var old_size = Vector2()
