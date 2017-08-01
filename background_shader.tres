@@ -18,13 +18,13 @@ float timeLeftInLargeCycle = timeTruncated*10-(TIME-mod(TIME,1));
 float rando = rand(vec2(POSITION.x,POSITION.y),12345.678);
 if (rando > 0.999) {
 	float blackness = 0;
-	float timeDecimals = mod(TIME,1)+(rand(vec2(POSITION.x+6,POSITION.y+6),12345.678)/4);
+	float timeDecimals = mod(TIME,1)+(rand(vec2(POSITION.x+6,POSITION.y+6),12345.678)/2);
 	if (timeDecimals < 0.5) {
 		blackness = timeDecimals*2;
 	} else {
 		blackness = abs((timeDecimals*2)-2);
 	}
-	blackness /= 17;
+	blackness /= 4;
 	blackness += rand(vec2(POSITION.x-6,POSITION.y-6),12345.678);
 	COLOR = vec4(blackness,blackness,blackness,1);
 } else {
