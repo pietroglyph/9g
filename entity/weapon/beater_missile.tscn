@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://entity/weapon/beater_missile.gd" type="Script" id=1]
+[ext_resource path="res://image/sprite/Beater Missile.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.95317, 32.0387 )
+
+[sub_resource type="ColorRamp" id=1]
+
+offsets = FloatArray( 0, 0.0775194 )
+colors = ColorArray( 1, 0.304688, 0, 1, 0.527344, 0.527344, 0.527344, 1 )
+
+[node name="beater_missile" type="RigidBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( -4.37114e-08, -1, 1, -4.37114e-08, -4.37114e-08, -1 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 1.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
+script/script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="."]
+
+transform/scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+
+[node name="exhaust" type="Particles2D" parent="sprite"]
+
+transform/pos = Vector2( -128, 0 )
+config/amount = 256
+config/lifetime = 10.0
+config/process_mode = 1
+params/direction = 270.0
+params/spread = 10.0
+params/linear_velocity = 50.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 270.0
+params/gravity_strength = 0.1
+params/radial_accel = 10.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 5.0
+params/final_size = 6.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/direction = 2.0
+randomness/spread = 1.0
+randomness/linear_velocity = 1.0
+randomness/initial_size = 0.44
+randomness/final_size = 0.53
+randomness/hue_variation = 0.02
+randomness/anim_speed_scale = 1.0
+color/color_ramp = SubResource( 1 )
+
+[node name="collision" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -4.37114e-08, -1 )
+transform/rot = 90.0
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+
