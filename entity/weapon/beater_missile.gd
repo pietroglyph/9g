@@ -9,8 +9,14 @@ func _ready():
 	# Initialization here
 	pass
 
-func get_name():
+func get_item_name():
 	return "Beater Missile"
 
-func get_description():
+func get_item_description():
 	return "With casings salvaged from past missiles and chimneys, and a tendency to explode when bumped, the beater missile is excellent for those on a budget."
+
+func get_item_texture():
+	return get_node("sprite").get_texture()
+
+func get_item_cost():
+	return 30

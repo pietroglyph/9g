@@ -26,14 +26,17 @@ func _ready():
 				node.get_node("back").connect("pressed", self, "go_to_target", ["start"])
 			
 	get_node("foreground/play/next").connect("pressed", self, "go_to_target", ["play2"])
-	get_node("foreground/play2/next").connect("pressed", self, "go_to_target", ["start"])
+	get_node("foreground/play2/next").connect("pressed", self, "go_to_target", ["game"])
 			
 	get_tree().get_root().connect("size_changed", self, "update_size")
-	get_node("foreground/play/loadout_selector").set_player(1)
-	get_node("foreground/play2/loadout_selector").set_player(2)
 	
 func go_to_target(var screen = "start"):
-		
+	if (screen == "play2" || screen == "game") && get_node("foreground/play/loadout_selector").get_loadout_size() <= 0:
+		return
+	elif screen == "game":
+		get_tree().change_scene("res://scene/game/game.tscn")
+		return
+
 	var target_cur_coordinates = Vector2(0, 0) # Initalize to 0, 0
 	var screen_node
 	if get_node("foreground").has_node(screen):
@@ -51,12 +54,11 @@ func go_to_target(var screen = "start"):
 		for node in get_node("foreground").get_children():
 			if node.get_type() == "ReferenceFrame":
 				tween.interpolate_property(node, "rect/pos", node.get_pos(), Vector2(node.get_pos().x+(0-target_cur_coordinates.x),0), time, Tween.TRANS_EXPO, Tween.EASE_OUT, 0)
-				print(distance)
 		tween.start()
 	current_screen = screen
 
 func update_size():
-	go_to_target("start") # Screens get off on resize, so this just resets back to a known position
+	go_to_target(current_screen) # Screens get off on resize, so we need to recalculate this
 
 func quit():
 	get_tree().quit() # Exit the game

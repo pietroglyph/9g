@@ -1,8 +1,22 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://scene/menu/loadout_selector.gd" type="Script" id=1]
 [ext_resource path="res://font/Nestill-Regular-Small.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://font/Magra-Regular.fnt" type="BitmapFont" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
 
 [node name="loadout_selector" type="Control"]
 
@@ -45,37 +59,17 @@ percent/visible = false
 [node name="budget_label" type="Label" parent="."]
 
 anchor/left = 2
-anchor/right = 2
+anchor/right = 1
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.01
 margin/top = 0.0
-margin/right = 0.5
+margin/right = 0.0
 margin/bottom = 40.0
 custom_fonts/font = ExtResource( 3 )
 text = "Budget: FIXME/FIXME"
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="side_label" type="Label" parent="."]
-
-anchor/left = 2
-anchor/right = 2
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 0.5
-margin/top = 0.0
-margin/right = 0.99
-margin/bottom = 40.0
-custom_fonts/font = ExtResource( 3 )
-text = "You are on the FIXME side"
-align = 2
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
@@ -93,6 +87,7 @@ margin/left = 0.0
 margin/top = 40.0
 margin/right = 0.3
 margin/bottom = 0.0
+custom_styles/bg_focus = SubResource( 1 )
 
 [node name="loadout_list" type="ItemList" parent="."]
 
@@ -107,5 +102,6 @@ margin/left = 0.3
 margin/top = 40.0
 margin/right = 0.0
 margin/bottom = 0.0
+custom_styles/bg_focus = SubResource( 2 )
 
 

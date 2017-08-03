@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=1]
 
 [ext_resource path="res://scene/menu/menu.gd" type="Script" id=1]
-[ext_resource path="res://effect/background_materiall.tres" type="CanvasItemMaterial" id=2]
+[ext_resource path="res://scene/star_background.tscn" type="PackedScene" id=2]
 [ext_resource path="res://font/Nestill-Regular-Small.fnt" type="BitmapFont" id=3]
 [ext_resource path="res://font/Nestill-Regular.fnt" type="BitmapFont" id=4]
 [ext_resource path="res://scene/menu/loadout_selector.tscn" type="PackedScene" id=5]
@@ -28,7 +28,7 @@ content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 
 resource/name = "Title Animation"
 length = 5.0
@@ -67,20 +67,7 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 
-[node name="color" type="ColorFrame" parent="background"]
-
-material/material = ExtResource( 2 )
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
-color = Color( 0, 0, 0, 1 )
+[node name="star_background" parent="background" instance=ExtResource( 2 )]
 
 [node name="foreground" type="CanvasLayer" parent="."]
 
@@ -295,12 +282,12 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="title_animation" type="AnimationPlayer" parent="foreground/start/title"]
+[node name="title_animation" type="AnimationPlayer" parent="foreground/start"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("")
-"anims/Title Animation" = SubResource( 4 )
+"anims/Title Animation" = SubResource( 5 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
