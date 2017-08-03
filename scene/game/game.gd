@@ -4,16 +4,25 @@ extends Node2D
 # var a = 2
 # var b = "textvar"
 
+onready var camera = get_node("camera")
+
 func _ready():
 	set_process_input(true)
 	get_node("pause_menu/pause_panel/resume").connect("pressed", self, "resume")
 	get_node("pause_menu/pause_panel/quit").connect("pressed", self, "_quit_to_menu")
+	camera.make_current()
 
 func _input(event):
+	# No switch statement in stable, so we'll use a if-else chain
 	if event.is_action_pressed("ui_pause") && !get_tree().is_paused():
 		pause()
 	elif event.is_action_pressed("ui_pause") && get_tree().is_paused():
 		resume()
+	elif event.is_action_pressed("ui_left"):
+		camera.set_h_offset(-200)
+	elif event.is_action_pressed("ui_right"):
+		camera.set_h_offset(200)
+	
 
 func pause():
 	if !get_tree().is_paused():

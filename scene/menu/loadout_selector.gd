@@ -3,7 +3,6 @@ extends Control
 export(String, DIR) var weapon_dir = "res://entity/weapon"
 var budget_max = 1000
 var budget_used = 0
-var loadout = {}
 var loadout_list_size = 0 # Maybe the reason not to use ItemList
 
 onready var budget_bar = get_node("budget_bar")
@@ -12,7 +11,10 @@ onready var side_label = get_node("side_label")
 onready var weapon_list = get_node("weapon_list")
 onready var loadout_list = get_node("loadout_list")
 
+onready var global = get_node("/root/global")
+
 func _ready():
+	global.loadout_index += 1
 	# Load weapons into the menus
 	var dir = Directory.new()
 	if dir.open(weapon_dir) == OK:
@@ -52,10 +54,11 @@ func add_item(index):
 	var weapon_instance = weapon.instance()
 	var idx = loadout_list.add_item(weapon_instance.get_item_name(), weapon_instance.get_item_texture(), false)
 	loadout_list_size += 1
-	if !loadout.has(file_name):
-		loadout[file_name] = 1
+	if !global.loadout.has(global.loadout_index):
+		global.loadout[global.loadout_index] = {}
+		global.loadout[global.loadout_index][file_name] = 1
 	else:
-		loadout[file_name] += 1
+		global.loadout[global.loadout_index][file_name] += 1
 	budget_used += cost
 	var info = {"file_name": file_name, "cost": cost}
 	loadout_list.set_item_metadata(loadout_list_size-1, info)
@@ -68,8 +71,8 @@ func remove_item(index):
 	var file_name = loadout_list.get_item_metadata(index)["file_name"]
 	var cost = loadout_list.get_item_metadata(index)["cost"]
 	budget_used -= cost
-	if loadout.has(file_name):
-		loadout[file_name] -= 1
+	if global.loadout.has(global.loadout_index):
+		global.loadout[global.loadout_index][file_name] -= 1
 	loadout_list.remove_item(index)
 	loadout_list_size -= 1
 	update()

@@ -7,7 +7,7 @@
 [ext_resource path="res://scene/menu/loadout_selector.tscn" type="PackedScene" id=5]
 [ext_resource path="res://font/Nestill-Regular-Large.fnt" type="BitmapFont" id=6]
 
-[sub_resource type="StyleBoxEmpty" id=1]
+[sub_resource type="StyleBoxEmpty" id=4]
 
 content_margin/left = -1.0
 content_margin/right = -1.0
@@ -30,7 +30,6 @@ content_margin/bottom = -1.0
 
 [sub_resource type="Animation" id=5]
 
-resource/name = "Title Animation"
 length = 5.0
 loop = true
 step = 0.2
@@ -123,7 +122,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 278.0
 margin/bottom = 128.0
-custom_styles/hover = SubResource( 1 )
+custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_fonts/font = ExtResource( 4 )
@@ -148,7 +147,7 @@ margin/left = 136.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 128.0
-custom_styles/hover = SubResource( 1 )
+custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_fonts/font = ExtResource( 4 )
@@ -209,7 +208,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 278.0
 margin/bottom = 128.0
-custom_styles/hover = SubResource( 1 )
+custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_fonts/font = ExtResource( 4 )
@@ -234,7 +233,7 @@ margin/left = 136.0
 margin/top = 0.0
 margin/right = -135.0
 margin/bottom = 128.0
-custom_styles/hover = SubResource( 1 )
+custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_fonts/font = ExtResource( 4 )
@@ -318,7 +317,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 149.0
 margin/bottom = 74.0
-custom_styles/hover = SubResource( 1 )
+custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_fonts/font = ExtResource( 3 )
@@ -340,7 +339,7 @@ margin/left = 0.0
 margin/top = 78.0
 margin/right = 149.0
 margin/bottom = 152.0
-custom_styles/hover = SubResource( 1 )
+custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )
 custom_fonts/font = ExtResource( 3 )
