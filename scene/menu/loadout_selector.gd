@@ -14,7 +14,6 @@ onready var loadout_list = get_node("loadout_list")
 onready var global = get_node("/root/global")
 
 func _ready():
-	global.loadout_index += 1
 	# Load weapons into the menus
 	var dir = Directory.new()
 	if dir.open(weapon_dir) == OK:

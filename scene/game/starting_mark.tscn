@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://scene/game/starting_mark.gd" type="Script" id=1]
+[ext_resource path="res://image/sprite/Weapon Starting Mark.png" type="Texture" id=2]
+
+[node name="starting_mark" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="gui_sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="weapon_sprite" type="Sprite" parent="gui_sprite"]
+
+transform/pos = Vector2( 6, 0 )
+transform/scale = Vector2( 0.6, 0.6 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+

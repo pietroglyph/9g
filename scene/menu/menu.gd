@@ -36,6 +36,8 @@ func go_to_target(var screen = "start"):
 	elif screen == "game":
 		get_tree().change_scene("res://scene/game/game.tscn")
 		return
+	elif screen == "play2":
+		get_node("/root/global").loadout_index += 1
 
 	var target_cur_coordinates = Vector2(0, 0) # Initalize to 0, 0
 	var screen_node
