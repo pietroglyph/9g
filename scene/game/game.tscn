@@ -195,6 +195,19 @@ shortcut = null
 text = "Next"
 flat = true
 
+[node name="selectors" type="Control" parent="planner_layer"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+
 [node name="pause_menu" type="CanvasLayer" parent="."]
 
 layer = 1
@@ -244,7 +257,7 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 480.0
 custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.332031, 0.332031, 1 )
+custom_colors/font_color = Color( 1, 0.332039, 0.332031, 1 )
 text = "9g"
 align = 1
 valign = 1

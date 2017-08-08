@@ -13,14 +13,27 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 
+[node name="selectors" type="Control" parent="display"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
+
 [node name="camera" type="Camera2D" parent="."]
 
 anchor_mode = 1
 rotating = false
 current = false
 zoom = Vector2( 1, 1 )
-limit/left = -10000000
-limit/top = -10000000
+limit/left = 0
+limit/top = 0
 limit/right = 10000000
 limit/bottom = 10000000
 drag_margin/h_enabled = true
@@ -31,23 +44,5 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
-
-[node name="pos" type="Label" parent="camera"]
-
-anchor/left = 1
-anchor/top = 1
-anchor/right = 1
-anchor/bottom = 1
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 64.0
-margin/top = 64.0
-margin/right = -298.0
-margin/bottom = 0.0
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 

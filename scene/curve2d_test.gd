@@ -2,29 +2,37 @@ extends Node2D
 
 # Based upon https://en.wikipedia.org/wiki/Centripetal_Catmull%E2%80%93Rom_spline
 
+onready var selector_packed = load("res://scene/game/selector.tscn")
+
 var points = []
-var interp_amount = 10
+var dragging = false
 
 func _ready():
+	get_node("camera").make_current()
 	set_process_input(true)
+	set_process(true)
+
+func _process(delta):
+	if Input.is_action_pressed("ui_left"):
+		get_node("camera").move_local_x(-1000*delta)
+	if Input.is_action_pressed("ui_right"):
+		get_node("camera").move_local_x(1000*delta)
+	if Input.is_action_pressed("ui_up"):
+		get_node("camera").move_local_y(-1000*delta)
+	if Input.is_action_pressed("ui_down"):
+		get_node("camera").move_local_y(1000*delta)
 
 func _input(event):
-	if event.is_action_pressed("ui_click"):
+	if event.is_action_pressed("ui_click") && !Input.is_action_pressed("ui_focus_next"):
 		# Spline can't have two overlapping points that are adjacent in order
 		if points.back() != get_global_mouse_pos():
 			points.append(get_global_mouse_pos())
-		self.update()
-	elif event.is_action_pressed("ui_left"):
-		get_node("camera").make_current()
-		get_node("camera").move_local_x(-100)
-	elif event.is_action_pressed("ui_right"):
-		get_node("camera").make_current()
-		get_node("camera").move_local_x(100)
-	elif event.is_action_pressed("ui_up"):
-		get_node("camera").make_current()
-		get_node("camera").move_local_y(-100)
-	elif event.type == InputEvent.MOUSE_MOTION:
-		get_node("camera/pos").set_text(str(get_global_mouse_pos()))
+			var selector = selector_packed.instance()
+			get_node("display/selectors").add_child(selector)
+			selector.set_pos(get_global_mouse_pos())
+			selector.index = points.size()-1
+			print(selector.index)
+			self.update()
 
 func _draw():
 	if points.size() < 2:
@@ -32,9 +40,8 @@ func _draw():
 	
 	var C = []
 	for i in range(points.size()-3):
-		draw_circle(points[i], 10, Color(0, 0, 0))
-		C = interpolate(points[i], points[i+1], points[i+2], points[i+3], C, 60)
-	
+		C = interpolate(points[i], points[i+1], points[i+2], points[i+3], C, 50)
+		
 	var last_point = points.front()
 	for pnt in C:
 		draw_line(last_point, pnt, Color(255, 255, 255))
