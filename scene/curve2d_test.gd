@@ -28,11 +28,17 @@ func _input(event):
 		if points.back() != get_global_mouse_pos():
 			points.append(get_global_mouse_pos())
 			var selector = selector_packed.instance()
-			get_node("display/selectors").add_child(selector)
+			get_node("camera/display/selectors").add_child(selector)
 			selector.set_pos(get_global_mouse_pos())
 			selector.index = points.size()-1
 			print(selector.index)
 			self.update()
+	
+	if event.is_action_pressed("ui_cancel"):
+		points = []
+		for sel in get_node("camera/display/selectors").get_children():
+			sel.queue_free()
+			update()
 
 func _draw():
 	if points.size() < 2:
@@ -46,6 +52,7 @@ func _draw():
 	for pnt in C:
 		draw_line(last_point, pnt, Color(255, 255, 255))
 		last_point = pnt
+	draw_line(last_point, points.back(), Color(255, 255, 255)) # This creates a sharp angle, but we want a line just to show
 
 # Interpolates the 4 points of cardinal spline
 func interpolate(P0, P1, P2, P3, C_arr, interp_point_amount = 100):

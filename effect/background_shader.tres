@@ -28,7 +28,7 @@ if (rando > 0.999) {
 	blackness += rand(vec2(POSITION.x-6,POSITION.y-6),12345.678);
 	COLOR = vec4(blackness,blackness,blackness,1);
 } else {
-	COLOR = vec4(0,0,0,1);
+	COLOR = vec4(0,0,0.1,1);
 }",
 "fragment_ofs": 0,
 "light": "",

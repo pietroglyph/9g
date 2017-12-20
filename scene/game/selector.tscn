@@ -6,7 +6,7 @@
 
 script/source = "extends Sprite
 
-onready var parent_scene = get_parent().get_parent().get_parent() # Is this really the best way to do this?
+onready var parent_scene = get_parent().get_parent().get_parent().get_parent() # Is this really the best way to do this?
 
 var index = -1
 var dragging = false
@@ -32,7 +32,7 @@ func _process(delta):
 
 [node name="selector" type="Sprite"]
 
-transform/scale = Vector2( 0.5, 0.5 )
+transform/scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 script/script = SubResource( 1 )
 

@@ -6,25 +6,24 @@
 
 script/script = ExtResource( 1 )
 
-[node name="display" type="CanvasLayer" parent="."]
+[node name="instruction_text" type="RichTextLabel" parent="."]
 
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-
-[node name="selectors" type="Control" parent="display"]
-
-anchor/right = 1
-anchor/bottom = 1
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 0.0
-margin/bottom = 0.0
+margin/right = 500.0
+margin/bottom = 160.0
+bbcode/enabled = true
+bbcode/bbcode = "This is an example of cardinal splines with tangents calculated with the Catmull-Rom method, implemented in GDScript (and, by extension, the Godot engine).
+
+[center][u]Controls:[/u][/center]
+[b]Right Click[/b] - Place a Control Point
+[b]Tab[/b]           - Move a Control Point
+[b]Escape[/b]      - Clear all Control Points"
+visible_characters = -1
 
 [node name="camera" type="Camera2D" parent="."]
 
@@ -44,5 +43,25 @@ drag_margin/left = 0.2
 drag_margin/top = 0.2
 drag_margin/right = 0.2
 drag_margin/bottom = 0.2
+
+[node name="display" type="CanvasLayer" parent="camera"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="selectors" type="Control" parent="camera/display"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 
 
